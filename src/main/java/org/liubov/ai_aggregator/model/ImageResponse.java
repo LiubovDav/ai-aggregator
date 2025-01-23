@@ -21,7 +21,8 @@ public class ImageResponse {
     @Column(nullable = false)
     private Integer imageRequestId;
     @Column(nullable = false)
-    private Object image;
+    // todo: modify the type
+    private String image;
     @CreationTimestamp
     private LocalDateTime createdOn;
 }
