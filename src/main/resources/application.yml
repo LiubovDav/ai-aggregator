@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: ai-aggregator
+
+  profiles:
+    active: dev
+#    active: prod
+
+  datasource:
+    username:
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+#      ddl-auto: create-drop
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+      data-locations: "classpath:data-mysql.sql"
+
+#  security:
+#    user:
+#      name:
+#      password:
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/ai-aggregator?createDatabaseIfNotExist=true
+
+server:
+  port: 8080
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    url: jdbc:mysql://
+
+server:
+  port: 5000 # AWS
