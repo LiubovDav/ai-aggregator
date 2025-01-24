@@ -3,17 +3,19 @@ spring:
     name: ai-aggregator
 
   profiles:
-    active: dev
-#    active: prod
+#    active: dev
+    active: prod
 
   datasource:
-    username:
-    password:
+    url: jdbc:mysql://${MYSQL_HOSTNAME}:${MYSQL_PORT}/${MYSQL_DATABASE}?createDatabaseIfNotExist=true
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-#      ddl-auto: create-drop
+#      ddl-auto: none
       ddl-auto: update
+#      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
@@ -36,9 +38,6 @@ spring:
     activate:
       on-profile: dev
 
-  datasource:
-    url: jdbc:mysql://localhost:3306/ai-aggregator?createDatabaseIfNotExist=true
-
 server:
   port: 8080
 
@@ -48,9 +47,6 @@ spring:
   config:
     activate:
       on-profile: prod
-
-  datasource:
-    url: jdbc:mysql://
 
 server:
   port: 5000 # AWS
