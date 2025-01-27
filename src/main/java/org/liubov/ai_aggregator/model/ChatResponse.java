@@ -9,7 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "text_response")
+@Table(name = "chat_response")
 @Data
 public class ChatResponse {
     @Id
