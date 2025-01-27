@@ -1,5 +1,6 @@
 package org.liubov.ai_aggregator.controller.api;
 
+import org.liubov.ai_aggregator.ai.chat_gpt.ChatGPTService;
 import org.liubov.ai_aggregator.dto.UserDTO;
 import org.liubov.ai_aggregator.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +15,17 @@ import java.util.List;
 public class UserController {
 
     private UserService userService;
+    private ChatGPTService chatGPTService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, ChatGPTService chatGPTService) {
         this.userService = userService;
+        this.chatGPTService = chatGPTService;
     }
 
     @GetMapping
     public List<UserDTO> list() {
+        chatGPTService.send("What are the three deepest lakes on planet Earth?");
+
         return userService.findAll();
     }
 

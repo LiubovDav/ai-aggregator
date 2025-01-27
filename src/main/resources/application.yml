@@ -3,8 +3,8 @@ spring:
     name: ai-aggregator
 
   profiles:
-#    active: dev
-    active: prod
+    active: dev
+#    active: prod
 
   datasource:
     url: jdbc:mysql://${MYSQL_HOSTNAME}:${MYSQL_PORT}/${MYSQL_DATABASE}?createDatabaseIfNotExist=true
@@ -26,6 +26,14 @@ spring:
     init:
       mode: always
       data-locations: "classpath:data-mysql.sql"
+
+
+  ai:
+    openai:
+      api-key: SOME-FAKE-KEY
+      chat:
+        api-key: SOME-FAKE-KEY
+
 
 #  security:
 #    user:
