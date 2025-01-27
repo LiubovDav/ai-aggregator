@@ -1,9 +1,10 @@
-package org.liubov.ai_aggregator.ai.chat_gpt;
+package org.liubov.ai_aggregator.ai.chat;
 
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.openai.OpenAiChatOptions;
+import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,8 +21,7 @@ public class ChatGPTService {
                 new Prompt(
                         text,
                         OpenAiChatOptions.builder()
-//                                .model("gpt-4-o")
-                                .model("gpt-4o-mini")
+                                .model(OpenAiApi.ChatModel.GPT_4_O_MINI)
                                 .temperature(0.4)
                                 .build()
                 ));
