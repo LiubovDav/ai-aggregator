@@ -1,6 +1,7 @@
 package org.liubov.ai_aggregator.controller.api;
 
-import org.liubov.ai_aggregator.ai.chat_gpt.ChatGPTService;
+import org.liubov.ai_aggregator.ai.chat.ChatGPTService;
+import org.liubov.ai_aggregator.ai.chat.GeminiService;
 import org.liubov.ai_aggregator.dto.UserDTO;
 import org.liubov.ai_aggregator.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,17 +15,20 @@ import java.util.List;
 @RequestMapping("api/v1/user")
 public class UserController {
 
-    private UserService userService;
-    private ChatGPTService chatGPTService;
+    private final UserService userService;
+    private final ChatGPTService chatGPTService;
+    private final GeminiService geminiService;
 
-    public UserController(UserService userService, ChatGPTService chatGPTService) {
+    public UserController(UserService userService, ChatGPTService chatGPTService, GeminiService geminiService) {
         this.userService = userService;
         this.chatGPTService = chatGPTService;
+        this.geminiService = geminiService;
     }
 
     @GetMapping
     public List<UserDTO> list() {
-        chatGPTService.send("What are the three deepest lakes on planet Earth?");
+//        chatGPTService.send("Name the ten largest rivers on planet Earth");
+//        geminiService.send("Name the ten largest rivers on planet Earth");
 
         return userService.findAll();
     }

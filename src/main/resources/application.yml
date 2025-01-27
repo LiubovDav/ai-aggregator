@@ -34,6 +34,11 @@ spring:
       chat:
         api-key: ${SPRING_AI_OPENAI_API_KEY}
 
+    vertex:
+      ai:
+        gemini:
+          projectId: ${SPRING_AI_VERTEX_GEMINI_PROJECT_ID}
+          location: ${SPRING_AI_VERTEX_GEMINI_LOCATION}
 
 #  security:
 #    user:
