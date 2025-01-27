@@ -9,19 +9,15 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "text_response")
+@Table(name = "text_dialog")
 @Data
-public class TextResponse {
+public class ChatDialog {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Setter(value = AccessLevel.PRIVATE)
     private Integer id;
     @Column(nullable = false)
-    private Integer textDialogId;
-    @Column(nullable = false)
-    private Integer textRequestId;
-    @Column(nullable = false)
-    private String text;
+    private Integer userId;
     @CreationTimestamp
     private LocalDateTime createdOn;
 }
