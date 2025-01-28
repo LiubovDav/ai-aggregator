@@ -2,29 +2,28 @@ package org.liubov.ai_aggregator.ai.image;
 
 import org.springframework.ai.image.ImagePrompt;
 import org.springframework.ai.image.ImageResponse;
-import org.springframework.ai.openai.OpenAiImageModel;
-import org.springframework.ai.openai.OpenAiImageOptions;
-import org.springframework.ai.openai.api.OpenAiImageApi;
+import org.springframework.ai.stabilityai.StabilityAiImageModel;
+import org.springframework.ai.stabilityai.api.StabilityAiImageOptions;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ChatGPTImageService {
+public class StabilityImageService {
 
-    private final OpenAiImageModel openaiImageModel;
+    private final StabilityAiImageModel stabilityaiImageModel;
 
-    public ChatGPTImageService(OpenAiImageModel openaiImageModel) {
-        this.openaiImageModel = openaiImageModel;
+    public StabilityImageService(StabilityAiImageModel stabilityaiImageModel) {
+        this.stabilityaiImageModel = stabilityaiImageModel;
     }
 
     public ImageResponse send(String text) {
-        ImageResponse response = openaiImageModel.call(
+
+        ImageResponse response = stabilityaiImageModel.call(
                 new ImagePrompt(text,
-                        OpenAiImageOptions.builder()
-                                .model(OpenAiImageApi.ImageModel.DALL_E_2.getValue())
-//                                .quality("hd")
+                        StabilityAiImageOptions.builder()
+                                .stylePreset("cinematic")
                                 .N(1)
-//                                .height(256)
-//                                .width(256)
+//                                .height(1024)
+//                                .width(1024)
                                 .build())
         );
 

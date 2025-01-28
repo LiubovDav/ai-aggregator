@@ -48,6 +48,9 @@ spring:
 #          options:
 #            deployment-name:
 
+    stabilityai:
+      api-key: ${SPRING_AI_STABILITYAI_API_KEY}
+
 #  security:
 #    user:
 #      name:

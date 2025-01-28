@@ -19,12 +19,22 @@ public class AzureOpenAIImageService {
         ImageResponse response = azureOpenaiImageModel.call(
                 new ImagePrompt(text,
                         OpenAiImageOptions.builder()
-                                .quality("hd")
+//                                .quality("hd")
                                 .N(1)
-                                .height(1024)
-                                .width(1024).build())
-
+//                                .height(1024)
+//                                .width(1024)
+                                .build())
         );
+
+        System.out.println("***************************************************************************************");
+        System.out.println(response.getMetadata().toString());
+        System.out.println("***************************************************************************************");
+        System.out.println(response.getResult().toString());
+        System.out.println("***************************************************************************************");
+        System.out.println(response.getResult().getOutput().getB64Json());
+        System.out.println("***************************************************************************************");
+        System.out.println(response.getResult().getOutput().getUrl());
+        System.out.println("***************************************************************************************");
 
         return response;
     }
