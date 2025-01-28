@@ -1,5 +1,6 @@
 package org.liubov.ai_aggregator.ai.image;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.image.ImagePrompt;
 import org.springframework.ai.image.ImageResponse;
 import org.springframework.ai.openai.OpenAiImageModel;
@@ -7,6 +8,7 @@ import org.springframework.ai.openai.OpenAiImageOptions;
 import org.springframework.ai.openai.api.OpenAiImageApi;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class ChatGPTImageService {
 
@@ -28,15 +30,15 @@ public class ChatGPTImageService {
                                 .build())
         );
 
-        System.out.println("***************************************************************************************");
-        System.out.println(response.getMetadata().toString());
-        System.out.println("***************************************************************************************");
-        System.out.println(response.getResult().toString());
-        System.out.println("***************************************************************************************");
-        System.out.println(response.getResult().getOutput().getB64Json());
-        System.out.println("***************************************************************************************");
-        System.out.println(response.getResult().getOutput().getUrl());
-        System.out.println("***************************************************************************************");
+        log.info("***************************************************************************************");
+        log.info(response.getMetadata().toString());
+        log.info("***************************************************************************************");
+        log.info(response.getResult().toString());
+        log.info("***************************************************************************************");
+        log.info(response.getResult().getOutput().getB64Json());
+        log.info("***************************************************************************************");
+        log.info(response.getResult().getOutput().getUrl());
+        log.info("***************************************************************************************");
 
         return response;
     }

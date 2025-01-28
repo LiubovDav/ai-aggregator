@@ -1,5 +1,6 @@
 package org.liubov.ai_aggregator.ai.chat;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.openai.OpenAiChatModel;
@@ -7,6 +8,7 @@ import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class ChatGPTChatService {
 
@@ -27,13 +29,13 @@ public class ChatGPTChatService {
                 )
         );
 
-        System.out.println("***************************************************************************************");
-        System.out.println(response.getMetadata().toString());
-        System.out.println("***************************************************************************************");
-        System.out.println(response.getResult().toString());
-        System.out.println("***************************************************************************************");
-        System.out.println(response.getResult().getOutput().getText());
-        System.out.println("***************************************************************************************");
+        log.info("***************************************************************************************");
+        log.info(response.getMetadata().toString());
+        log.info("***************************************************************************************");
+        log.info(response.getResult().toString());
+        log.info("***************************************************************************************");
+        log.info(response.getResult().getOutput().getText());
+        log.info("***************************************************************************************");
 
         return response;
     }
