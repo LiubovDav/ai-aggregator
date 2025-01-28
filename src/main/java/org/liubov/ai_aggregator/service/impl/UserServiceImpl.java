@@ -15,11 +15,11 @@ import java.util.List;
 @Slf4j
 public class UserServiceImpl implements UserService {
 
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-//    private PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
 
 //    public UserServiceImpl(UserMapper userMapper, UserRepository userRepository, PasswordEncoder passwordEncoder) {
 //        this.userMapper = userMapper;

@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class UserDTO {
-    private Integer id;
+    private Integer userId;
     @NotEmpty(message = "Email should not be empty")
     @Email
     private String email;
