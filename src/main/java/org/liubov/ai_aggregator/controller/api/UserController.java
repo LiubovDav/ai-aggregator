@@ -1,7 +1,8 @@
 package org.liubov.ai_aggregator.controller.api;
 
-import org.liubov.ai_aggregator.ai.chat.ChatGPTService;
-import org.liubov.ai_aggregator.ai.chat.GeminiService;
+import org.liubov.ai_aggregator.ai.chat.ChatGPTChatService;
+import org.liubov.ai_aggregator.ai.chat.GeminiChatService;
+import org.liubov.ai_aggregator.ai.image.ChatGPTImageService;
 import org.liubov.ai_aggregator.dto.UserDTO;
 import org.liubov.ai_aggregator.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,20 +17,23 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final ChatGPTService chatGPTService;
-    private final GeminiService geminiService;
+    private final ChatGPTChatService chatGPTChatService;
+    private final GeminiChatService geminiChatService;
+    private final ChatGPTImageService chatGPTImageService;
 
-    public UserController(UserService userService, ChatGPTService chatGPTService, GeminiService geminiService) {
+    public UserController(UserService userService, ChatGPTChatService chatGPTChatService, GeminiChatService geminiChatService, ChatGPTImageService chatGPTImageService) {
         this.userService = userService;
-        this.chatGPTService = chatGPTService;
-        this.geminiService = geminiService;
+        this.chatGPTChatService = chatGPTChatService;
+        this.geminiChatService = geminiChatService;
+        this.chatGPTImageService = chatGPTImageService;
     }
 
     @GetMapping
     public List<UserDTO> list() {
 //        chatGPTService.send("Name the ten largest rivers on planet Earth");
 //        geminiService.send("Name the ten largest rivers on planet Earth");
-
+        chatGPTImageService.send("A light cream colored mini golden doodle");
+        
         return userService.findAll();
     }
 

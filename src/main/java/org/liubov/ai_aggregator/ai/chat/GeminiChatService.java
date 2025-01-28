@@ -2,17 +2,16 @@ package org.liubov.ai_aggregator.ai.chat;
 
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.openai.OpenAiChatModel;
-import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.ai.openai.api.OpenAiApi;
+import org.springframework.ai.vertexai.gemini.VertexAiGeminiChatModel;
+import org.springframework.ai.vertexai.gemini.VertexAiGeminiChatOptions;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ChatGPTService {
+public class GeminiChatService {
 
-    private final OpenAiChatModel chatModel;
+    private final VertexAiGeminiChatModel chatModel;
 
-    public ChatGPTService(OpenAiChatModel chatModel) {
+    public GeminiChatService(VertexAiGeminiChatModel chatModel) {
         this.chatModel = chatModel;
     }
 
@@ -20,11 +19,12 @@ public class ChatGPTService {
         ChatResponse response = chatModel.call(
                 new Prompt(
                         text,
-                        OpenAiChatOptions.builder()
-                                .model(OpenAiApi.ChatModel.GPT_4_O_MINI)
+                        VertexAiGeminiChatOptions.builder()
+                                .model(VertexAiGeminiChatModel.ChatModel.GEMINI_1_5_FLASH)
                                 .temperature(0.4)
                                 .build()
-                ));
+                )
+        );
 
         System.out.println("***************************************************************************************");
         System.out.println(response.getMetadata().toString());
