@@ -40,6 +40,14 @@ spring:
           projectId: ${SPRING_AI_VERTEX_GEMINI_PROJECT_ID}
           location: ${SPRING_AI_VERTEX_GEMINI_LOCATION}
 
+    azure:
+      openai:
+        api-key: ${SPRING_AI_AZURE_OPENAI_API_KEY}
+        endpoint: ${SPRING_AI_AZURE_OPENAI_ENDPOINT}
+#        image:
+#          options:
+#            deployment-name:
+
 #  security:
 #    user:
 #      name:
