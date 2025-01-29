@@ -17,7 +17,7 @@ public class GeminiChatService {
         this.chatModel = chatModel;
     }
 
-    public ChatResponse send(String text) {
+    public String send(String text) {
         ChatResponse response = chatModel.call(
                 new Prompt(
                         text,
@@ -36,6 +36,6 @@ public class GeminiChatService {
         log.info(response.getResult().getOutput().getText());
         log.info("***************************************************************************************");
 
-        return response;
+        return response.getResult().getOutput().getText();
     }
 }

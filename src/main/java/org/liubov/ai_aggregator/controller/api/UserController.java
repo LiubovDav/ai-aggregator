@@ -1,10 +1,5 @@
 package org.liubov.ai_aggregator.controller.api;
 
-import org.liubov.ai_aggregator.ai.chat.ChatGPTChatService;
-import org.liubov.ai_aggregator.ai.chat.GeminiChatService;
-import org.liubov.ai_aggregator.ai.image.AzureOpenAIImageService;
-import org.liubov.ai_aggregator.ai.image.ChatGPTImageService;
-import org.liubov.ai_aggregator.ai.image.StabilityImageService;
 import org.liubov.ai_aggregator.dto.UserDTO;
 import org.liubov.ai_aggregator.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,29 +14,13 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final ChatGPTChatService chatGPTChatService;
-    private final GeminiChatService geminiChatService;
-    private final ChatGPTImageService chatGPTImageService;
-    private final AzureOpenAIImageService azureOpenAIImageService;
-    private final StabilityImageService stabilityImageService;
 
-    public UserController(UserService userService, ChatGPTChatService chatGPTChatService, GeminiChatService geminiChatService, ChatGPTImageService chatGPTImageService, AzureOpenAIImageService azureOpenAIImageService, StabilityImageService stabilityImageService) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.chatGPTChatService = chatGPTChatService;
-        this.geminiChatService = geminiChatService;
-        this.chatGPTImageService = chatGPTImageService;
-        this.azureOpenAIImageService = azureOpenAIImageService;
-        this.stabilityImageService = stabilityImageService;
     }
 
     @GetMapping
     public List<UserDTO> list() {
-//        chatGPTService.send("Name the ten largest rivers on planet Earth");
-//        geminiService.send("Name the ten largest rivers on planet Earth");
-//        chatGPTImageService.send("A light cream colored mini golden doodle");
-//        azureOpenAIImageService.send("A light cream colored mini golden doodle");
-        stabilityImageService.send("A light cream colored mini golden doodle");
-        
         return userService.findAll();
     }
 
