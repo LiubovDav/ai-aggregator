@@ -27,9 +27,9 @@ public class ChatRequestController {
         String chatGPTChatResponse = chatGPTChatService.send(chatRequestDTO.getText());
         chatResponseDTO.setTextChatGPT(chatGPTChatResponse);
         // todo: uncomment when the issue is resolved
-//        String geminiChatResponse = geminiChatService.send(chatRequestDTO.getText());
-//        chatResponseDTO.setTextGemini(geminiChatResponse);
-        chatResponseDTO.setTextGemini("Some response from Gemini");
+        String geminiChatResponse = geminiChatService.send(chatRequestDTO.getText());
+        chatResponseDTO.setTextGemini(geminiChatResponse);
+//        chatResponseDTO.setTextGemini("Some response from Gemini");
         return chatResponseDTO;
     }
 

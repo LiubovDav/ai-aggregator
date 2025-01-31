@@ -2,6 +2,7 @@ package org.liubov.ai_aggregator.controller.api;
 
 import org.liubov.ai_aggregator.dto.ChatDialogDTO;
 import org.liubov.ai_aggregator.service.ChatDialogService;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,7 @@ public class ChatDialogController {
     }
 
     @PostMapping
-    public ChatDialogDTO createDialog(Integer userId) {
+    public ChatDialogDTO createDialog(@PathVariable Integer userId) {
 
         ChatDialogDTO chatDialog = new ChatDialogDTO();
         chatDialog.setUserId(userId);
