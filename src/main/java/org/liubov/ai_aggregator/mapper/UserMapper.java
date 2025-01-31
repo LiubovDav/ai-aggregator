@@ -2,7 +2,7 @@ package org.liubov.ai_aggregator.mapper;
 
 import org.liubov.ai_aggregator.dto.UserDTO;
 import org.liubov.ai_aggregator.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 

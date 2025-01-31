@@ -8,7 +8,7 @@ public interface UserService {
 
     List<UserDTO> findAll();
 
-    void save(UserDTO userDTO);
+    UserDTO save(UserDTO userDTO);
 
     boolean validate(String email, String password);
 

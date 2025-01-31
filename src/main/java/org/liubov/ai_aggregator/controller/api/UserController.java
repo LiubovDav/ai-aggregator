@@ -2,10 +2,7 @@ package org.liubov.ai_aggregator.controller.api;
 
 import org.liubov.ai_aggregator.dto.UserDTO;
 import org.liubov.ai_aggregator.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +19,11 @@ public class UserController {
     @GetMapping
     public List<UserDTO> list() {
         return userService.findAll();
+    }
+
+    @PostMapping
+    public UserDTO create(@RequestBody UserDTO userDTO) {
+        return userService.save(userDTO);
     }
 
     @PostMapping("/save_test")
