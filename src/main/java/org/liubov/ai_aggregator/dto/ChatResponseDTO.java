@@ -7,4 +7,5 @@ public class ChatResponseDTO {
     private Integer textRequestId;
     private String textChatGPT;
     private String textGemini;
+    private String textMistral;
 }
