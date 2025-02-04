@@ -29,10 +29,27 @@ spring:
 
 
   ai:
+    anthropic:
+      api-key: ${SPRING_AI_ANTHROPIC_API_KEY}
+
+    azure:
+      openai:
+        api-key: ${SPRING_AI_AZURE_OPENAI_API_KEY}
+        endpoint: ${SPRING_AI_AZURE_OPENAI_ENDPOINT}
+    #        image:
+    #          options:
+    #            deployment-name:
+
+    mistralai:
+      api-key: ${SPRING_AI_MISTRALAI_API_KEY}
+
     openai:
       api-key: ${SPRING_AI_OPENAI_API_KEY}
       chat:
         api-key: ${SPRING_AI_OPENAI_API_KEY}
+
+    stabilityai:
+      api-key: ${SPRING_AI_STABILITYAI_API_KEY}
 
     vertex:
       ai:
@@ -40,19 +57,7 @@ spring:
           projectId: ${SPRING_AI_VERTEX_GEMINI_PROJECT_ID}
           location: ${SPRING_AI_VERTEX_GEMINI_LOCATION}
 
-    azure:
-      openai:
-        api-key: ${SPRING_AI_AZURE_OPENAI_API_KEY}
-        endpoint: ${SPRING_AI_AZURE_OPENAI_ENDPOINT}
-#        image:
-#          options:
-#            deployment-name:
 
-    mistralai:
-      api-key: ${SPRING_AI_MISTRALAI_API_KEY}
-
-    stabilityai:
-      api-key: ${SPRING_AI_STABILITYAI_API_KEY}
 
 #  security:
 #    user:

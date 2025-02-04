@@ -8,4 +8,5 @@ public class ChatResponseDTO {
     private String textChatGPT;
     private String textGemini;
     private String textMistral;
+    private String textAnthropic;
 }

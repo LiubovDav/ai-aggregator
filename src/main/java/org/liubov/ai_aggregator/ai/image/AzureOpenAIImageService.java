@@ -18,6 +18,8 @@ public class AzureOpenAIImageService {
     }
 
     public ImageResponse send(String text) {
+        log.info("***************************************************************************************");
+        log.info("{} REQUEST: {}", this.getClass().getName(), text);
         ImageResponse response = azureOpenaiImageModel.call(
                 new ImagePrompt(text,
                         OpenAiImageOptions.builder()
@@ -25,16 +27,21 @@ public class AzureOpenAIImageService {
                                 .N(1)
 //                                .height(1024)
 //                                .width(1024)
-                                .build())
+                                .build()
+                )
         );
 
         log.info("***************************************************************************************");
+        log.info("{} METADATA: {}", this.getClass().getName(), text);
         log.info(response.getMetadata().toString());
         log.info("***************************************************************************************");
+        log.info("{} RESULT: {}", this.getClass().getName(), text);
         log.info(response.getResult().toString());
         log.info("***************************************************************************************");
+        log.info("{} RESULT B64Json: {}", this.getClass().getName(), text);
         log.info(response.getResult().getOutput().getB64Json());
         log.info("***************************************************************************************");
+        log.info("{} RESULT URL: {}", this.getClass().getName(), text);
         log.info(response.getResult().getOutput().getUrl());
         log.info("***************************************************************************************");
 

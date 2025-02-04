@@ -19,6 +19,8 @@ public class ChatGPTImageService {
     }
 
     public ImageResponse send(String text) {
+        log.info("***************************************************************************************");
+        log.info("{} REQUEST: {}", this.getClass().getName(), text);
         ImageResponse response = openaiImageModel.call(
                 new ImagePrompt(text,
                         OpenAiImageOptions.builder()
@@ -27,16 +29,21 @@ public class ChatGPTImageService {
                                 .N(1)
 //                                .height(256)
 //                                .width(256)
-                                .build())
+                                .build()
+                )
         );
 
         log.info("***************************************************************************************");
+        log.info("{} METADATA: {}", this.getClass().getName(), text);
         log.info(response.getMetadata().toString());
         log.info("***************************************************************************************");
+        log.info("{} RESULT: {}", this.getClass().getName(), text);
         log.info(response.getResult().toString());
         log.info("***************************************************************************************");
+        log.info("{} RESULT B64Json: {}", this.getClass().getName(), text);
         log.info(response.getResult().getOutput().getB64Json());
         log.info("***************************************************************************************");
+        log.info("{} RESULT URL: {}", this.getClass().getName(), text);
         log.info(response.getResult().getOutput().getUrl());
         log.info("***************************************************************************************");
 
