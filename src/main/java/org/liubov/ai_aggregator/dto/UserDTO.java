@@ -15,7 +15,7 @@ public class UserDTO {
     @NotEmpty(message = "Password should not be empty")
     private String password;
     @NotEmpty(message = "Confirm Password should not be empty")
-    private String password2;
+    private String confirmPassword;
     @NotEmpty(message = "Name should not be empty")
     private String name;
     private LocalDateTime createdOn;
