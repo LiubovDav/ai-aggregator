@@ -26,7 +26,7 @@ public class UserController {
         return userService.save(userDTO);
     }
 
-    @PostMapping("/validate")
+    @GetMapping ("/validate")
     public UserDTO validate(@RequestParam String email, @RequestParam String password) {
         return userService.validate(email, password);
     }
