@@ -45,15 +45,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean validate(String email, String password) {
+    public UserDTO validate(String email, String password) {
         User user = userRepository.findByEmail(email);
 
         if (user == null) {
-            return false;
+            return new UserDTO();
         }
 
 //        return passwordEncoder.matches(password, user.getPassword());
-        return true;
+        return userMapper.toUserDTO(user);
     }
 
     @Override

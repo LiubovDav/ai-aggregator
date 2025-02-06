@@ -10,7 +10,7 @@ public interface UserService {
 
     UserDTO save(UserDTO userDTO);
 
-    boolean validate(String email, String password);
+    UserDTO validate(String email, String password);
 
     UserDTO findByEmail(String email);
 }
