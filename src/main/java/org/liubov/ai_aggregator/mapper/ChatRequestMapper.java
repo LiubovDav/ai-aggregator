@@ -12,6 +12,7 @@ public class ChatRequestMapper {
             return null;
         }
         ChatRequest chatRequest = new ChatRequest();
+        chatRequest.setChatDialogId(chatRequestDTO.getChatDialogId());
         // todo
 //        chatRequest.setChatInterchange(chatRequestDTO.getChatInterchange());
         chatRequest.setText(chatRequestDTO.getText());
@@ -25,6 +26,7 @@ public class ChatRequestMapper {
         }
         ChatRequestDTO chatRequestDTO = new ChatRequestDTO();
         chatRequestDTO.setChatRequestId(chatRequest.getId());
+        chatRequestDTO.setChatDialogId(chatRequest.getChatDialogId());
         // todo
 //        chatRequestDTO.setChatInterchangeId(chatRequest.getChatInterchangeId());
         chatRequestDTO.setText(chatRequest.getText());

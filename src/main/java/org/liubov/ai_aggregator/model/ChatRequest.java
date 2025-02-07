@@ -17,6 +17,9 @@ public class ChatRequest {
     @Setter(value = AccessLevel.PRIVATE)
     private Long id;
 
+    @Column(nullable = false)
+    private Long chatDialogId;
+
     @OneToOne(mappedBy = "chatRequest")
     private ChatInterchange chatInterchange;
 

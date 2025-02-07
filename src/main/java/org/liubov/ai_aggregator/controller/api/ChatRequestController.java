@@ -4,8 +4,10 @@ import org.liubov.ai_aggregator.ai.chat.AnthropicChatService;
 import org.liubov.ai_aggregator.ai.chat.ChatGPTChatService;
 import org.liubov.ai_aggregator.ai.chat.GeminiChatService;
 import org.liubov.ai_aggregator.ai.chat.MistralChatService;
+import org.liubov.ai_aggregator.dto.ChatInterchangeDTO;
 import org.liubov.ai_aggregator.dto.ChatRequestDTO;
 import org.liubov.ai_aggregator.dto.ChatResponseDTO;
+import org.liubov.ai_aggregator.service.ChatInterchangeService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +22,14 @@ public class ChatRequestController {
     private final MistralChatService mistralChatService;
     private final AnthropicChatService anthropicChatService;
 
-    public ChatRequestController(ChatGPTChatService chatGPTChatService, GeminiChatService geminiChatService, MistralChatService mistralChatService, AnthropicChatService anthropicChatService) {
+    private final ChatInterchangeService chatInterchangeService;
+
+    public ChatRequestController(ChatGPTChatService chatGPTChatService, GeminiChatService geminiChatService, MistralChatService mistralChatService, AnthropicChatService anthropicChatService, ChatInterchangeService chatInterchangeService) {
         this.chatGPTChatService = chatGPTChatService;
         this.geminiChatService = geminiChatService;
         this.mistralChatService = mistralChatService;
         this.anthropicChatService = anthropicChatService;
+        this.chatInterchangeService = chatInterchangeService;
     }
 
     @PostMapping
@@ -58,7 +63,11 @@ public class ChatRequestController {
             chatResponseDTO.setTextAnthropic("Error from Anthropic");
         }
 
-        // save interchange to DB
+        ChatInterchangeDTO chatInterchangeDTO = new ChatInterchangeDTO();
+        chatInterchangeDTO.setChatDialogId(chatRequestDTO.getChatDialogId());
+        chatInterchangeDTO.setChatRequest(chatRequestDTO);
+        chatInterchangeDTO.setChatResponse(chatResponseDTO);
+        chatInterchangeService.save(chatInterchangeDTO);
 
         return chatResponseDTO;
     }
