@@ -15,11 +15,14 @@ public class ChatRequest {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Setter(value = AccessLevel.PRIVATE)
-    private Integer id;
-    @Column(nullable = false)
-    private Integer textDialogId;
+    private Long id;
+
+    @OneToOne(mappedBy = "chatRequest")
+    private ChatInterchange chatInterchange;
+
     @Column(nullable = false)
     private String text;
+
     @CreationTimestamp
     private LocalDateTime createdOn;
 }

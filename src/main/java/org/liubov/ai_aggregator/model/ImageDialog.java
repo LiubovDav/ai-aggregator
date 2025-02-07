@@ -15,9 +15,11 @@ public class ImageDialog {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Setter(value = AccessLevel.PRIVATE)
-    private Integer id;
+    private Long id;
+
     @Column(nullable = false)
-    private Integer userId;
+    private Long userId;
+
     @CreationTimestamp
     private LocalDateTime createdOn;
 }

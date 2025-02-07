@@ -5,7 +5,8 @@ import lombok.Data;
 
 @Data
 public class ImageRequestDTO {
-    private Integer imageDialogId;
+    private Long imageDialogId;
+
     @NotEmpty(message = "Text should not be empty")
     private String text;
 }

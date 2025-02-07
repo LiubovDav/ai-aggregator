@@ -15,13 +15,17 @@ public class ChatModel {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Setter(value = AccessLevel.PRIVATE)
-    private Integer id;
+    private Long id;
+
     @Column(nullable = false)
-    private String name;
+    private String name; // ChatGPT
+
     @Column(nullable = false)
-    private String fullName;
+    private String fullName; // ChatGPT 4o mini
+
     @Column(nullable = false)
     private boolean active;
+
     @CreationTimestamp
     private LocalDateTime createdOn;
 }

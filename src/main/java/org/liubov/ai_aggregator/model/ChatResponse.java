@@ -15,13 +15,19 @@ public class ChatResponse {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Setter(value = AccessLevel.PRIVATE)
-    private Integer id;
-    @Column(nullable = false)
-    private Integer textDialogId;
-    @Column(nullable = false)
-    private Integer textRequestId;
-    @Column(nullable = false)
-    private String text;
+    private Long id;
+
+    @OneToOne(mappedBy = "chatResponse")
+    private ChatInterchange chatInterchange;
+
+    private String textChatGPT;
+
+    private String textGemini;
+
+    private String textMistral;
+
+    private String textAnthropic;
+
     @CreationTimestamp
     private LocalDateTime createdOn;
 }

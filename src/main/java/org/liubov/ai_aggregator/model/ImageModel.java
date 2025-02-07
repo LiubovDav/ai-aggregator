@@ -15,13 +15,17 @@ public class ImageModel {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Setter(value = AccessLevel.PRIVATE)
-    private Integer id;
+    private Long id;
+
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private String fullName;
+
     @Column(nullable = false)
     private boolean active;
+
     @CreationTimestamp
     private LocalDateTime createdOn;
 }

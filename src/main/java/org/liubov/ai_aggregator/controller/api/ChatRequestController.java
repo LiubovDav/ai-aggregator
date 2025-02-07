@@ -58,6 +58,8 @@ public class ChatRequestController {
             chatResponseDTO.setTextAnthropic("Error from Anthropic");
         }
 
+        // save interchange to DB
+
         return chatResponseDTO;
     }
 

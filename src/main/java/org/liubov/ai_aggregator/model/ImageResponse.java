@@ -15,14 +15,18 @@ public class ImageResponse {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Setter(value = AccessLevel.PRIVATE)
-    private Integer id;
+    private Long id;
+
     @Column(nullable = false)
-    private Integer imageDialogId;
+    private Long imageDialogId;
+
     @Column(nullable = false)
-    private Integer imageRequestId;
+    private Long imageRequestId;
+
     @Column(nullable = false)
     // todo: modify the type
     private String image;
+
     @CreationTimestamp
     private LocalDateTime createdOn;
 }

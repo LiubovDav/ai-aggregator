@@ -4,7 +4,8 @@ import lombok.Data;
 
 @Data
 public class ImageResponseDTO {
-    private Integer imageRequestId;
+    private Long imageRequestId;
+
     // todo: modify the type
     private String image;
 }

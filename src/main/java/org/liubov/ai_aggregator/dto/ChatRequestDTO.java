@@ -5,7 +5,10 @@ import lombok.Data;
 
 @Data
 public class ChatRequestDTO {
-    private Integer chatDialogId;
+    private Long chatRequestId;
+
+    private Long chatInterchangeId;
+
     @NotEmpty(message = "Text should not be empty")
     private String text;
 }
