@@ -1,9 +1,6 @@
 package org.liubov.ai_aggregator.controller.api;
 
-import org.liubov.ai_aggregator.ai.chat.AnthropicChatService;
-import org.liubov.ai_aggregator.ai.chat.ChatGPTChatService;
-import org.liubov.ai_aggregator.ai.chat.GeminiChatService;
-import org.liubov.ai_aggregator.ai.chat.MistralChatService;
+import org.liubov.ai_aggregator.ai.chat.*;
 import org.liubov.ai_aggregator.dto.ChatInterchangeDTO;
 import org.liubov.ai_aggregator.dto.ChatRequestDTO;
 import org.liubov.ai_aggregator.dto.ChatResponseDTO;
@@ -21,14 +18,16 @@ public class ChatRequestController {
     private final GeminiChatService geminiChatService;
     private final MistralChatService mistralChatService;
     private final AnthropicChatService anthropicChatService;
+    private final WatsonxChatService watsonxChatService;
 
     private final ChatInterchangeService chatInterchangeService;
 
-    public ChatRequestController(ChatGPTChatService chatGPTChatService, GeminiChatService geminiChatService, MistralChatService mistralChatService, AnthropicChatService anthropicChatService, ChatInterchangeService chatInterchangeService) {
+    public ChatRequestController(ChatGPTChatService chatGPTChatService, GeminiChatService geminiChatService, MistralChatService mistralChatService, AnthropicChatService anthropicChatService, WatsonxChatService watsonxChatService, ChatInterchangeService chatInterchangeService) {
         this.chatGPTChatService = chatGPTChatService;
         this.geminiChatService = geminiChatService;
         this.mistralChatService = mistralChatService;
         this.anthropicChatService = anthropicChatService;
+        this.watsonxChatService = watsonxChatService;
         this.chatInterchangeService = chatInterchangeService;
     }
 
@@ -43,7 +42,8 @@ public class ChatRequestController {
         }
 
         try {
-            String geminiChatResponse = geminiChatService.send(chatRequestDTO.getText());
+//            String geminiChatResponse = geminiChatService.send(chatRequestDTO.getText());
+            String geminiChatResponse = chatGPTChatService.send(chatRequestDTO.getText());
             chatResponseDTO.setTextGemini(geminiChatResponse);
         } catch (Exception e) {
             chatResponseDTO.setTextGemini("Error from Gemini");
@@ -57,11 +57,16 @@ public class ChatRequestController {
         }
 
         try {
-            String anthropicChatResponse = anthropicChatService.send(chatRequestDTO.getText());
+//            String anthropicChatResponse = anthropicChatService.send(chatRequestDTO.getText());
+            String anthropicChatResponse = mistralChatService.send(chatRequestDTO.getText());
             chatResponseDTO.setTextAnthropic(anthropicChatResponse);
         } catch (Exception e) {
             chatResponseDTO.setTextAnthropic("Error from Anthropic");
         }
+
+        // todo
+//        String watsonxChatResponse = watsonxChatService.send(chatRequestDTO.getText());
+//        chatResponseDTO.setTextWatsonx(watsonxChatResponse);
 
         ChatInterchangeDTO chatInterchangeDTO = new ChatInterchangeDTO();
         chatInterchangeDTO.setChatDialogId(chatRequestDTO.getChatDialogId());

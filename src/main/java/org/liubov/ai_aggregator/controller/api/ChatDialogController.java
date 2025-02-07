@@ -15,7 +15,7 @@ public class ChatDialogController {
     }
 
     @PostMapping
-    public ChatDialogDTO createDialog(@RequestBody Long userId) {
+    public ChatDialogDTO createDialog(@RequestParam Long userId) {
         ChatDialogDTO chatDialog = new ChatDialogDTO();
         chatDialog.setUserId(userId);
         return chatDialogService.save(chatDialog);

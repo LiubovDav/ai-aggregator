@@ -4,6 +4,8 @@ import org.liubov.ai_aggregator.dto.ChatResponseDTO;
 import org.liubov.ai_aggregator.model.ChatResponse;
 import org.springframework.stereotype.Component;
 
+import static org.liubov.ai_aggregator.config.AppValues.TEXT_MAX_LENGTH;
+
 @Component
 public class ChatResponseMapper {
     public ChatResponse toChatResponse(ChatResponseDTO chatResponseDTO) {
@@ -13,10 +15,14 @@ public class ChatResponseMapper {
         ChatResponse chatResponse = new ChatResponse();
         // todo
 //        chatResponse.setChatInterchangeId(chatResponseDTO.getChatInterchangeId());
-        chatResponse.setTextChatGPT(chatResponseDTO.getTextChatGPT());
-        chatResponse.setTextGemini(chatResponseDTO.getTextGemini());
-        chatResponse.setTextMistral(chatResponseDTO.getTextMistral());
-        chatResponse.setTextAnthropic(chatResponseDTO.getTextAnthropic());
+        chatResponse.setTextChatGPT(chatResponseDTO.getTextChatGPT().substring(0,
+                Math.min(chatResponseDTO.getTextChatGPT().length(), TEXT_MAX_LENGTH)));
+        chatResponse.setTextGemini(chatResponseDTO.getTextGemini().substring(0,
+                Math.min(chatResponseDTO.getTextGemini().length(), TEXT_MAX_LENGTH)));
+        chatResponse.setTextMistral(chatResponseDTO.getTextMistral().substring(0,
+                Math.min(chatResponseDTO.getTextMistral().length(), TEXT_MAX_LENGTH)));
+        chatResponse.setTextAnthropic(chatResponseDTO.getTextAnthropic().substring(0,
+                Math.min(chatResponseDTO.getTextAnthropic().length(), TEXT_MAX_LENGTH)));
 
         return chatResponse;
     }

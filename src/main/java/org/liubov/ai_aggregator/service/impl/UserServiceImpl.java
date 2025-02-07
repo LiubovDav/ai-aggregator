@@ -6,7 +6,7 @@ import org.liubov.ai_aggregator.mapper.UserMapper;
 import org.liubov.ai_aggregator.model.User;
 import org.liubov.ai_aggregator.repository.UserRepository;
 import org.liubov.ai_aggregator.service.UserService;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,17 +19,12 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-//    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-//    public UserServiceImpl(UserMapper userMapper, UserRepository userRepository, PasswordEncoder passwordEncoder) {
-//        this.userMapper = userMapper;
-//        this.userRepository = userRepository;
-//        this.passwordEncoder = passwordEncoder;
-//    }
-
-    public UserServiceImpl(UserMapper userMapper, UserRepository userRepository) {
+    public UserServiceImpl(UserMapper userMapper, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userMapper = userMapper;
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -39,7 +34,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO save(UserDTO userDTO) {
-        User user = userRepository.save(userMapper.toUser(userDTO));
+        User user = userRepository.findByEmail(userDTO.getEmail());
+
+        if (user != null) {
+            // todo: user with such email exists in the DB
+            log.error("user with such email exists in the DB");
+            return new UserDTO();
+        }
+
+        user = userRepository.save(userMapper.toUser(userDTO));
         log.info("User was successfully saved");
         return userMapper.toUserDTO(user);
     }
@@ -49,10 +52,16 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByEmail(email);
 
         if (user == null) {
+            // todo: no user with such email in the DB
+            log.error("no user with such email in the DB");
             return new UserDTO();
         }
 
-//        return passwordEncoder.matches(password, user.getPassword());
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            // todo: wrong password
+            log.error("Wrong password!");
+            return new UserDTO();
+        }
         return userMapper.toUserDTO(user);
     }
 

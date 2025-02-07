@@ -2,13 +2,20 @@ package org.liubov.ai_aggregator.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 
 import java.util.List;
 
-//@Configuration
+@Configuration
 //@EnableWebSecurity
 public class SecurityConfig /*extends WebSecurityConfigurerAdapter*/ {
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {

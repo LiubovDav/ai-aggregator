@@ -2,8 +2,7 @@ package org.liubov.ai_aggregator.mapper;
 
 import org.liubov.ai_aggregator.dto.UserDTO;
 import org.liubov.ai_aggregator.model.User;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,8 +10,12 @@ import java.util.List;
 
 @Component
 public class UserMapper {
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
+
+    private final PasswordEncoder passwordEncoder;
+
+    public UserMapper(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public User toUser(UserDTO userDTO) {
         if (userDTO == null) {
@@ -21,9 +24,7 @@ public class UserMapper {
         User user = new User();
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
-        // encode password
-//        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        user.setPassword(userDTO.getPassword());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         user.setCreatedOn(userDTO.getCreatedOn());
         user.setUpdatedOn(userDTO.getUpdatedOn());
 
@@ -37,7 +38,6 @@ public class UserMapper {
         UserDTO userDTO = new UserDTO();
         userDTO.setUserId(user.getId());
         userDTO.setEmail(user.getEmail());
-        userDTO.setPassword(user.getPassword());
         userDTO.setName(user.getName());
         userDTO.setCreatedOn(user.getCreatedOn());
         userDTO.setUpdatedOn(user.getUpdatedOn());

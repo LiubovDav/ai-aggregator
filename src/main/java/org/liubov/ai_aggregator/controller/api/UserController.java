@@ -36,14 +36,14 @@ public class UserController {
         UserDTO user1 = new UserDTO();
         user1.setName("John");
         user1.setEmail("john@gmail.com");
-        user1.setPassword("hgasjhdgajshdgj");
+        user1.setPassword("111111");
 
         userService.save(user1);
 
         UserDTO user2 = new UserDTO();
         user2.setName("Anna");
         user2.setEmail("anna@gmail.com");
-        user2.setPassword("hfdhagsjhdgajshdg");
+        user2.setPassword("222222");
 
         userService.save(user2);
     }

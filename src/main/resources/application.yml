@@ -14,12 +14,12 @@ spring:
   jpa:
     hibernate:
 #      ddl-auto: none
-      ddl-auto: update
-#      ddl-auto: create-drop
+#      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+#        dialect: org.hibernate.dialect.MySQLDialect
         format_sql: true
     defer-datasource-initialization: true
   sql:
@@ -58,6 +58,11 @@ spring:
           projectId: ${SPRING_AI_VERTEX_GEMINI_PROJECT_ID}
           location: ${SPRING_AI_VERTEX_GEMINI_LOCATION}
 
+    watsonx:
+      ai:
+        project-id: bla-bla
+        text-endpoint: bla-bla
+        iam-token: bla-bla
 
 
 #  security:

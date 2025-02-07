@@ -4,6 +4,8 @@ import org.liubov.ai_aggregator.dto.ChatRequestDTO;
 import org.liubov.ai_aggregator.model.ChatRequest;
 import org.springframework.stereotype.Component;
 
+import static org.liubov.ai_aggregator.config.AppValues.TEXT_MAX_LENGTH;
+
 @Component
 public class ChatRequestMapper {
     
@@ -15,7 +17,8 @@ public class ChatRequestMapper {
         chatRequest.setChatDialogId(chatRequestDTO.getChatDialogId());
         // todo
 //        chatRequest.setChatInterchange(chatRequestDTO.getChatInterchange());
-        chatRequest.setText(chatRequestDTO.getText());
+        chatRequest.setText(chatRequestDTO.getText().substring(0,
+                Math.min(chatRequestDTO.getText().length(), TEXT_MAX_LENGTH)));
 
         return chatRequest;
     }
