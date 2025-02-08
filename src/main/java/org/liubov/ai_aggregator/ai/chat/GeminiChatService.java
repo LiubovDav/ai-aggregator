@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class GeminiChatService {
+public class GeminiChatService implements ChatService {
 
     private final VertexAiGeminiChatModel chatModel;
 
@@ -17,6 +17,7 @@ public class GeminiChatService {
         this.chatModel = chatModel;
     }
 
+    @Override
     public String send(String text) {
         log.info("***************************************************************************************");
         log.info("{} REQUEST: {}", this.getClass().getName(), text);

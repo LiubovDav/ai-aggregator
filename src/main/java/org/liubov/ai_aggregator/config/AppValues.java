@@ -6,5 +6,5 @@ public final class AppValues {
 
     }
 
-    public static final int TEXT_MAX_LENGTH = 4000;
+
 }

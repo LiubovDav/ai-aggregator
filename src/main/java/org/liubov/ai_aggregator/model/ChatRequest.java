@@ -8,8 +8,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
-import static org.liubov.ai_aggregator.config.AppValues.TEXT_MAX_LENGTH;
-
 @Entity
 @Table(name = "chat_request")
 @Data
@@ -25,7 +23,7 @@ public class ChatRequest {
     @OneToOne(mappedBy = "chatRequest")
     private ChatInterchange chatInterchange;
 
-    @Column(nullable = false, length = TEXT_MAX_LENGTH)
+    @Lob
     private String text;
 
     @CreationTimestamp

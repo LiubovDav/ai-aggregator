@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class AnthropicChatService {
+public class AnthropicChatService implements ChatService {
 
     private final AnthropicChatModel chatModel;
 
@@ -17,6 +17,7 @@ public class AnthropicChatService {
         this.chatModel = chatModel;
     }
 
+    @Override
     public String send(String text) {
         log.info("***************************************************************************************");
         log.info("{} REQUEST: {}", this.getClass().getName(), text);

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class MistralChatService {
+public class MistralChatService implements ChatService {
 
     private final MistralAiChatModel chatModel;
 
@@ -18,6 +18,7 @@ public class MistralChatService {
         this.chatModel = chatModel;
     }
 
+    @Override
     public String send(String text) {
         log.info("***************************************************************************************");
         log.info("{} REQUEST: {}", this.getClass().getName(), text);
