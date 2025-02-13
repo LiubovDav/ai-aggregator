@@ -23,6 +23,9 @@ public class ChatRequest {
     @OneToOne(mappedBy = "chatRequest")
     private ChatInterchange chatInterchange;
 
+    @Column(nullable = false)
+    private Double temperature;
+
     @Lob
     private String text;
 

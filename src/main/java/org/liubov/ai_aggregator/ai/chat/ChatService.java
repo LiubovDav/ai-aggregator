@@ -1,5 +1,5 @@
 package org.liubov.ai_aggregator.ai.chat;
 
 public interface ChatService {
-    String send(String text);
+    String send(String text, Double temperature);
 }

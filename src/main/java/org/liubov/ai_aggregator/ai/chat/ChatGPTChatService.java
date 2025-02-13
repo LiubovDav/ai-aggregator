@@ -19,7 +19,7 @@ public class ChatGPTChatService implements ChatService {
     }
 
     @Override
-    public String send(String text) {
+    public String send(String text, Double temperature) {
         log.info("***************************************************************************************");
         log.info("{} REQUEST: {}", this.getClass().getName(), text);
         ChatResponse response = chatModel.call(
@@ -27,7 +27,7 @@ public class ChatGPTChatService implements ChatService {
                         text,
                         OpenAiChatOptions.builder()
                                 .model(OpenAiApi.ChatModel.GPT_4_O_MINI)
-                                .temperature(0.4)
+                                .temperature(temperature)
                                 .build()
                 )
         );

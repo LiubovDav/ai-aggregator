@@ -11,6 +11,8 @@ public class ChatRequestDTO {
 
     private Long chatInterchangeId;
 
+    private Double temperature;
+
     @NotEmpty(message = "Text should not be empty")
     private String text;
 }

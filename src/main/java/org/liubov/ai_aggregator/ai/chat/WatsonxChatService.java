@@ -18,14 +18,14 @@ public class WatsonxChatService implements ChatService {
     }
 
     @Override
-    public String send(String text) {
+    public String send(String text, Double temperature) {
         log.info("***************************************************************************************");
         log.info("{} REQUEST: {}", this.getClass().getName(), text);
         ChatResponse response = chatModel.call(
                 new Prompt(
                         text,
                         WatsonxAiChatOptions.builder()
-                                .temperature(0.4)
+                                .temperature(temperature)
                                 .build()
                 )
         );

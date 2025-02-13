@@ -18,7 +18,7 @@ public class AnthropicChatService implements ChatService {
     }
 
     @Override
-    public String send(String text) {
+    public String send(String text, Double temperature) {
         log.info("***************************************************************************************");
         log.info("{} REQUEST: {}", this.getClass().getName(), text);
         ChatResponse response = chatModel.call(
@@ -26,7 +26,7 @@ public class AnthropicChatService implements ChatService {
                         text,
                         AnthropicChatOptions.builder()
                                 .model("claude-2.1")
-                                .temperature(0.4)
+                                .temperature(temperature)
                                 .build()
                 )
         );

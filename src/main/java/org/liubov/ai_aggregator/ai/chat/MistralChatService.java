@@ -19,14 +19,14 @@ public class MistralChatService implements ChatService {
     }
 
     @Override
-    public String send(String text) {
+    public String send(String text, Double temperature) {
         log.info("***************************************************************************************");
         log.info("{} REQUEST: {}", this.getClass().getName(), text);
         ChatResponse response = chatModel.call(
                 new Prompt(text,
                         MistralAiChatOptions.builder()
                                 .model(MistralAiApi.ChatModel.LARGE.getValue())
-                                .temperature(0.5)
+                                .temperature(temperature)
                                 .build()
                 )
         );

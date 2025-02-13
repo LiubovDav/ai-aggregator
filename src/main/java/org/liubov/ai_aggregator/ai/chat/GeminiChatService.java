@@ -18,7 +18,7 @@ public class GeminiChatService implements ChatService {
     }
 
     @Override
-    public String send(String text) {
+    public String send(String text, Double temperature) {
         log.info("***************************************************************************************");
         log.info("{} REQUEST: {}", this.getClass().getName(), text);
         ChatResponse response = chatModel.call(
@@ -26,7 +26,7 @@ public class GeminiChatService implements ChatService {
                         text,
                         VertexAiGeminiChatOptions.builder()
                                 .model(VertexAiGeminiChatModel.ChatModel.GEMINI_1_5_FLASH)
-                                .temperature(0.4)
+                                .temperature(temperature)
                                 .build()
                 )
         );

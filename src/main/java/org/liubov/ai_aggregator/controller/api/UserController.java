@@ -1,11 +1,13 @@
 package org.liubov.ai_aggregator.controller.api;
 
+import lombok.extern.slf4j.Slf4j;
 import org.liubov.ai_aggregator.dto.UserDTO;
 import org.liubov.ai_aggregator.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("api/v1/user")
 public class UserController {
@@ -28,7 +30,9 @@ public class UserController {
 
     @GetMapping ("/validate")
     public UserDTO validate(@RequestParam String email, @RequestParam String password) {
-        return userService.validate(email, password);
+        UserDTO userDTO = userService.validate(email, password);
+        log.info(userDTO.toString());
+        return userDTO;
     }
 
     @PostMapping("/save_test")

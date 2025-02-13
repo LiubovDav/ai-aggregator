@@ -35,7 +35,7 @@ public class ChatRequestController {
     public ChatResponseDTO send(@RequestBody ChatRequestDTO chatRequestDTO) {
         ChatResponseDTO chatResponseDTO = new ChatResponseDTO();
         try {
-            String chatGPTChatResponse = chatGPTChatService.send(chatRequestDTO.getText());
+            String chatGPTChatResponse = chatGPTChatService.send(chatRequestDTO.getText(), chatRequestDTO.getTemperature());
             chatResponseDTO.setTextChatGPT(chatGPTChatResponse);
         } catch (Exception e) {
             chatResponseDTO.setTextChatGPT("Error from ChatGPT");
@@ -43,14 +43,14 @@ public class ChatRequestController {
 
         try {
 //            String geminiChatResponse = geminiChatService.send(chatRequestDTO.getText());
-            String geminiChatResponse = chatGPTChatService.send(chatRequestDTO.getText());
+            String geminiChatResponse = chatGPTChatService.send(chatRequestDTO.getText(), chatRequestDTO.getTemperature());
             chatResponseDTO.setTextGemini(geminiChatResponse);
         } catch (Exception e) {
             chatResponseDTO.setTextGemini("Error from Gemini");
         }
 
         try {
-            String mistralChatResponse = mistralChatService.send(chatRequestDTO.getText());
+            String mistralChatResponse = mistralChatService.send(chatRequestDTO.getText(), chatRequestDTO.getTemperature());
             chatResponseDTO.setTextMistral(mistralChatResponse);
         } catch (Exception e) {
             chatResponseDTO.setTextMistral("Error from Mistral");
@@ -58,7 +58,7 @@ public class ChatRequestController {
 
         try {
 //            String anthropicChatResponse = anthropicChatService.send(chatRequestDTO.getText());
-            String anthropicChatResponse = mistralChatService.send(chatRequestDTO.getText());
+            String anthropicChatResponse = mistralChatService.send(chatRequestDTO.getText(), chatRequestDTO.getTemperature());
             chatResponseDTO.setTextAnthropic(anthropicChatResponse);
         } catch (Exception e) {
             chatResponseDTO.setTextAnthropic("Error from Anthropic");
