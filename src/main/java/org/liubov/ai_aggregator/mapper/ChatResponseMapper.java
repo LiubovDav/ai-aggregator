@@ -13,6 +13,7 @@ public class ChatResponseMapper {
         ChatResponse chatResponse = new ChatResponse();
         // todo
 //        chatResponse.setChatInterchangeId(chatResponseDTO.getChatInterchangeId());
+        chatResponse.setTemperature(chatResponseDTO.getTemperature());
         chatResponse.setTextChatGPT(chatResponseDTO.getTextChatGPT());
         chatResponse.setTextGemini(chatResponseDTO.getTextGemini());
         chatResponse.setTextMistral(chatResponseDTO.getTextMistral());
@@ -29,6 +30,7 @@ public class ChatResponseMapper {
         chatResponseDTO.setChatResponseId(chatResponse.getId());
 //        todo
 //        chatResponseDTO.setChatInterchangeId(chatResponse.getChatInterchangeId());
+        chatResponseDTO.setTemperature(chatResponse.getTemperature());
         chatResponseDTO.setTextChatGPT(chatResponse.getTextChatGPT());
         chatResponseDTO.setTextGemini(chatResponse.getTextGemini());
         chatResponseDTO.setTextMistral(chatResponse.getTextMistral());

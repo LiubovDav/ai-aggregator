@@ -8,6 +8,8 @@ public class ChatResponseDTO {
 
     private Long chatInterchangeId;
 
+    private Double temperature;
+
     private String textChatGPT;
 
     private String textGemini;

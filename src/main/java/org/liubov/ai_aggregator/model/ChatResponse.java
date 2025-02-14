@@ -20,6 +20,8 @@ public class ChatResponse {
     @OneToOne(mappedBy = "chatResponse")
     private ChatInterchange chatInterchange;
 
+    private Double temperature;
+
     @Lob
     private String textChatGPT;
 

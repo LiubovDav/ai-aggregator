@@ -34,6 +34,8 @@ public class ChatRequestController {
     @PostMapping
     public ChatResponseDTO send(@RequestBody ChatRequestDTO chatRequestDTO) {
         ChatResponseDTO chatResponseDTO = new ChatResponseDTO();
+        chatResponseDTO.setTemperature(chatRequestDTO.getTemperature());
+
         try {
             String chatGPTChatResponse = chatGPTChatService.send(chatRequestDTO.getText(), chatRequestDTO.getTemperature());
             chatResponseDTO.setTextChatGPT(chatGPTChatResponse);
@@ -42,7 +44,7 @@ public class ChatRequestController {
         }
 
         try {
-//            String geminiChatResponse = geminiChatService.send(chatRequestDTO.getText());
+//            String geminiChatResponse = geminiChatService.send(chatRequestDTO.getText(), chatRequestDTO.getTemperature());
             String geminiChatResponse = chatGPTChatService.send(chatRequestDTO.getText(), chatRequestDTO.getTemperature());
             chatResponseDTO.setTextGemini(geminiChatResponse);
         } catch (Exception e) {
@@ -57,7 +59,7 @@ public class ChatRequestController {
         }
 
         try {
-//            String anthropicChatResponse = anthropicChatService.send(chatRequestDTO.getText());
+//            String anthropicChatResponse = anthropicChatService.send(chatRequestDTO.getText(), chatRequestDTO.getTemperature());
             String anthropicChatResponse = mistralChatService.send(chatRequestDTO.getText(), chatRequestDTO.getTemperature());
             chatResponseDTO.setTextAnthropic(anthropicChatResponse);
         } catch (Exception e) {
@@ -65,7 +67,7 @@ public class ChatRequestController {
         }
 
         // todo
-//        String watsonxChatResponse = watsonxChatService.send(chatRequestDTO.getText());
+//        String watsonxChatResponse = watsonxChatService.send(chatRequestDTO.getText(), chatRequestDTO.getTemperature());
 //        chatResponseDTO.setTextWatsonx(watsonxChatResponse);
 
         ChatInterchangeDTO chatInterchangeDTO = new ChatInterchangeDTO();

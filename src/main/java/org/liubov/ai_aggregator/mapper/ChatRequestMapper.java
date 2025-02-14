@@ -15,7 +15,7 @@ public class ChatRequestMapper {
         chatRequest.setChatDialogId(chatRequestDTO.getChatDialogId());
         // todo
 //        chatRequest.setChatInterchange(chatRequestDTO.getChatInterchange());
-        chatRequest.setTemperature(chatRequest.getTemperature());
+        chatRequest.setTemperature(chatRequestDTO.getTemperature());
         chatRequest.setText(chatRequestDTO.getText());
 
         return chatRequest;
